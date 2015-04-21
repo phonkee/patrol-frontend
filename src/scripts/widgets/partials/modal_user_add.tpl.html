@@ -1,0 +1,55 @@
+<form role="form" ng-submit="vm.ok()" novalidate>
+    <div class="modal-header">
+        <h3 class="modal-title">Add user</h3>
+    </div>
+    <div class="modal-body">
+        <div class="form-group" ng-class="{'has-error': vm.error.fields.username}">
+            <label><i class="fa fa-times-circle-o" ng-if="vm.error.fields.username"></i> Username</label>
+            <input type="text" class="form-control" placeholder="Enter username ..." ng-model="vm.user.username"/>
+            <span ng-repeat="error in vm.error.fields.username" class="help-inline error">{{ error }}</span>
+        </div>
+
+        <div class="form-group" ng-class="{'has-error': vm.error.fields.name}">
+            <label><i class="fa fa-times-circle-o" ng-if="vm.error.fields.name"></i> Name</label>
+            <input type="text" class="form-control" placeholder="Enter name ..." ng-model="vm.user.name"/>
+            <span ng-repeat="error in vm.error.fields.name" class="help-inline error">{{ error }}</span>
+        </div>
+
+        <div class="form-group" ng-class="{'has-error': vm.error.fields.email}">
+            <label><i class="fa fa-times-circle-o" ng-if="vm.error.fields.email"></i> Email</label>
+            <input type="text" class="form-control" placeholder="Enter email ..." ng-model="vm.user.email"/>
+            <span ng-repeat="error in vm.error.fields.email" class="help-inline error">{{ error }}</span>
+        </div>
+
+        <div class="form-group" ng-class="{'has-error': vm.error.fields.password}">
+            <label><i class="fa fa-times-circle-o" ng-if="vm.error.fields.password"></i> Password</label>
+            <input type="password" class="form-control" placeholder="Enter password ..." ng-model="vm.user.password"/>
+            <span ng-repeat="error in vm.error.fields.password" class="help-inline error">{{ error }}</span>
+        </div>
+
+        <div class="form-group" ng-class="{'has-error': vm.error.fields.password_retype}">
+            <label><i class="fa fa-times-circle-o" ng-if="vm.error.fields.password_retype"></i> Retype password</label>
+            <input type="password" class="form-control" placeholder="Enter password ..." ng-model="vm.user.password_retype"/>
+            <span ng-repeat="error in vm.error.fields.password_retype" class="help-inline error">{{ error }}</span>
+        </div>
+
+        <div class="form-group">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" ng-model="vm.user.is_active">
+                    Active
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" ng-model="vm.user.is_superuser">
+                    Superuser
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="submit">Submit</button>
+        <button class="btn btn-warning" type="reset" ng-click="vm.cancel()">Cancel</button>
+    </div>
+</form>

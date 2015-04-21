@@ -1,0 +1,48 @@
+<aside class="main-sidebar">
+	<section class="sidebar">
+		<div class="user-panel">
+			<div class="pull-left info">
+				<p><a href="#">{{::user.username}}</a></p>
+				<a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+				<patrol-loader></patrol-loader>
+			</div>
+		</div>
+		<ul class="sidebar-menu">
+			<li class="header">MAIN NAVIGATION</li>
+
+			<li class="treeview" ui-sref-active='active'>
+				<a ui-sref="patrol.dashboard({reload:true})">
+					<i class="fa fa-dashboard"></i> <span>Dashboard</span>
+				</a>
+			</li>
+
+			<li class="treeview" ng-class="{'menu_open active': isAdmin}">
+				<a href="#">
+					<i class="fa fa-cog"></i> <span>Admin</span>
+				</a>
+				<ul class="treeview-menu">
+					<li ui-sref-active='active'>
+						<a ui-sref="patrol.admin-user-list({reload:true})"><i class="fa fa-user icon-resize-small"></i> Users</a>
+					</li>
+					<li ui-sref-active='active'>
+						<a ui-sref="patrol.admin-team-list({reload:true})"><i class="fa fa-users icon-resize-small"></i> Teams</a>
+					</li>
+					<li ui-sref-active='active'>
+						<a ui-sref="patrol.admin-project-list({reload:true})"><i class="fa fa-cubes icon-resize-small"></i> Projects</a>
+					</li>
+				</ul>
+			</li>
+
+			<li class="header" ng-repeat-start="project in projects"><b>{{::project.name}}</b></li>
+			<li ui-sref-active='active'>
+				<a ui-sref="patrol.project.dashboard({project_id: project.id, reload:true})"><i class="fa fa-dashboard icon-resize-small"></i> Dashboard</a>
+			</li>
+			<li ui-sref-active='active'>
+				<a ui-sref="patrol.project.eventgroups({project_id: project.id, reload:true})"><i class="fa fa-wifi icon-resize-small"></i> Events</a>
+			</li>
+			<li ng-repeat-end></li>
+
+
+		</ul>
+	</section>
+</aside>

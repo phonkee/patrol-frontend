@@ -1,0 +1,26 @@
+<form role="form" ng-submit="vm.AddProject()" novalidate>
+    <div class="modal-header">
+        <h3 class="modal-title">Add project</h3>
+    </div>
+    <div class="modal-body">
+        <!-- text input -->
+        <div class="form-group" ng-class="{'has-error': vm.error.fields.name}">
+            <label><i class="fa fa-times-circle-o" ng-if="vm.error.fields.name"></i> Name</label>
+            <input type="text" class="form-control" placeholder="Enter name ..." ng-model="vm.project.name"/>
+            <span ng-repeat="error in vm.error.fields.name" class="help-inline error">{{ error }}</span>
+        </div>
+
+        <!-- select -->
+        <div class="form-group" ng-class="{'has-error': vm.error.fields.team_id}">
+            <label><i class="fa fa-times-circle-o" ng-if="vm.error.fields.team_id"></i> Team</label>
+            <select class="form-control" ng-options="item.id as item.name for item in vm.teams | orderBy:'name'" ng-model="vm.project.team_id">
+                <option value="">--Select an option--</option>
+            </select>
+            <span ng-repeat="error in vm.error.fields.team_id" class="help-inline error">{{ error }}</span>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="vm.ok()">Submit</button>
+        <button class="btn btn-warning" ng-click="vm.cancel()">Cancel</button>
+    </div>
+</form>

@@ -1,0 +1,83 @@
+<div class="wrapper">
+
+	<!-- Header -->
+	<patrol-header></patrol-header>
+
+	<!-- Navigation -->
+	<patrol-navigation projects="projects"></patrol-navigation>
+
+	<!-- Right side column. Contains the navbar and content of the page -->
+	<div class="content-wrapper">
+		<!-- Content Header (Page header) -->
+		<section class="content-header">
+			<h1>
+				Projects
+				<small>List</small>
+			</h1>
+
+			<ol class="breadcrumb">
+				<li><a ui-sref="patrol.dashboard({reload:true})"><i class="fa fa-dashboard"></i> Home</a></li>
+				<li class="active">Admin</li>
+				<li class="active">Projects</li>
+			</ol>
+		</section>
+
+		<!-- Main content -->
+		<section class="content">
+
+			<h4 class="page-header">
+				&nbsp;
+				<button ng-click="vm.add()" ng-if="vm.metadata.actions.POST" class="btn btn-default pull-right" data-toggle="tooltip" title="Add Project"><i class="fa fa-plus"></i> Add</button>
+			</h4>
+
+			<div class="row">
+			    <div class="col-xs-12">
+			        <div class="box box-primary">
+			            <div class="box-header">
+			                <h3 class="box-title">Available projects</h3>
+							<!--
+							<div class="box-tools">
+								<div class="input-group">
+									<input type="text" ng-model="vm.team.name" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Add team"/>
+									<div class="input-group-btn">
+										<button class="btn btn-sm btn-default"><i class="fa fa-plus"></i></button>
+									</div>
+								</div>
+							</div>
+							-->
+			            </div><!-- /.box-header -->
+			            <div class="box-body table-responsive no-padding">
+			                <table class="table table-hover">
+			                    <tr>
+			                        <th>ID</th>
+			                        <th>Name</th>
+			                        <th>Date added</th>
+			                        <th>Platform</th>
+			                    	<th></th>
+			                    </tr>
+
+			                    <tr ng-repeat="project in vm.projects">
+			                        <td>{{::project.id}}</td>
+			                        <td>{{::project.name }}</td>
+			                        <td>{{::project.date_added | date : format : timezone}}</td>
+			                        <td>{{::project.platform}}</td>
+			                    	<td>
+			                    		<div class="btn-group-vertical">
+		                    				<button title="Detail" ui-sref="patrol.project.dashboard({project_id:project.id, reload:true})" class="btn btn-sm" ><i class="fa fa-search"></i></</button>
+			                    		</div>
+			                    	</td>
+			                    </tr>
+
+			                </table>
+			            </div><!-- /.box-body -->
+			        </div><!-- /.box -->
+			    </div>
+			</div>
+
+
+		</section><!-- /.content -->
+	</div><!-- /.content-wrapper -->
+
+	<patrol-footer controller="PatrolController"></patrol-footer>
+
+</div><!-- ./wrapper -->

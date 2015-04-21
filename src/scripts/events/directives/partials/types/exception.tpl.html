@@ -1,0 +1,16 @@
+<div class="row">
+	<div class="col-md-2">
+		<a class="btn btn-app">
+			<span class="badge bg-red">{{vm.eventgroup.times_seen}}</span>
+			<i class="fa fa-flash"></i>
+		</a>
+	</div>
+	<div class="col-md-4">
+		{{vm.eventgroup.message}} in {{vm.eventgroup.culprit}} <br />
+		First seen at {{vm.eventgroup.first_seen | date : format : timezone}}
+	</div>
+
+	<div class="col-md-5">
+		<pre>{{vm.eventgroup | json}}</pre>
+	</div>
+</div>
